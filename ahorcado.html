@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahorcado</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <nav class="menu-principal">
+    <a href="index.html">Inicio</a>
+    <a href="ahorcado.html" class="activo">Ahorcado</a>
+    <a href="noticias.html">Noticias</a>
+    <a href="nosotros.html">Nosotros</a>
+  </nav>
+
+  <main class="seccion-principal">
+    <h1>Ahorcado</h1>
+
+    <p id="palabra"></p>
+    <p>Intentos restantes: <span id="intentos"></span></p>
+    <img id="imagen-ahorcado" src="imagenes/ahorcado0.png" alt="Estado del ahorcado" />
+
+    <button id="btn-play">Play</button>
+
+    <div id="entrada-letra" style="margin-top:20px;">
+      <input type="text" id="input-letra" maxlength="1" placeholder="Ingresa una letra" disabled />
+      <button id="btn-adivinar" disabled>Adivinar</button>
+    </div>
+  </main>
+
+  <script type="module" src="js/ahorcado.js"></script>
+</body>
+</html>

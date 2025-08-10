@@ -1,0 +1,106 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.menu-principal {
+  background-color: #007BFF;
+  padding: 15px 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu-principal a {
+  color: white;
+  font-weight: 600;
+  margin: 0 25px;
+  text-decoration: none;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+.menu-principal a:hover,
+.menu-principal a.activo {
+  color: #FFC107;
+}
+
+.seccion-principal {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.destacados ul {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.destacados li {
+  margin-bottom: 10px;
+}
+
+.destacados a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: 600;
+}
+
+.destacados a:hover {
+  text-decoration: underline;
+}
+
+.novedades {
+  margin-top: 40px;
+  background-color: #e3f2fd;
+  padding: 20px;
+  border-radius: 8px;
+  color: #01579b;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 15px 0;
+  background: #f0f0f0;
+  text-align: center;
+  color: #555;
+  font-size: 0.9em;
+}
+
+/* Estilo para las imágenes de los juegos - siempre aplicado */
+.juego img {
+  width: 200px; /* tamaño por defecto para pantallas grandes */
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 10px;
+}
+#imagen-ahorcado {
+  width: 250px;
+  height: 300px;
+  object-fit: contain;
+}
+
+
+/* Responsive básico */
+@media (max-width: 768px) {
+  .menu-principal a {
+    display: inline-block;
+    margin: 10px 10px;
+    font-size: 1em;
+  }
+  .juego img {
+    width: 150px; /* tamaño reducido para pantallas chicas */
+  }
+}
