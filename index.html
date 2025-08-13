@@ -25,13 +25,18 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1>¡Juega al Ahorcado!</h1>
-                <p>Descubre palabras ocultas antes de que sea demasiado tarde</p>
-                <a href="ahorcado.html" class="btn btn-primary"><i class="fas fa-play"></i> Jugar Ahora</a>
+                <h1>¡Diversión sin Límites!</h1>
+                <p>Juegos clásicos y desafiantes para todas las edades</p>
+                <div class="hero-buttons">
+                    <a href="#featured-games" class="btn btn-primary">Explorar Juegos</a>
+                </div>
             </div>
         </section>
 
-        <section class="game-cards">
+        <section class="featured-games" id="featured-games">
+            <h2 class="section-title">Juegos Destacados</h2>
+            
+            <!-- Tarjeta del Ahorcado (TU VERSIÓN) -->
             <div class="game-card" onclick="location.href='ahorcado.html'">
                 <div class="card-icon">
                     <i class="fas fa-ghost"></i>
@@ -43,12 +48,31 @@
                 </div>
             </div>
             
-            <!-- Más juegos pueden agregarse aquí -->
+            <!-- Tarjeta de Piedra, Papel o Tijera (VERSIÓN DE TU COMPAÑERA) -->
+            <div class="game-card" onclick="location.href='piedra-papel-tijera.html'">
+                <div class="card-icon">
+                    <i class="fas fa-hand-scissors"></i>
+                </div>
+                <h3>Piedra, Papel o Tijera</h3>
+                <p>Clásico juego de manos</p>
+                <div class="card-footer">
+                    <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
+                </div>
+            </div>
+            
+            <!-- Espacio para más juegos -->
         </section>
     </main>
 
     <footer>
-        <p>© 2023 GameZone | Desarrollado por [Tu Nombre]</p>
+        <div class="footer-content">
+            <p>© 2023 GameZone | Desarrollado por [Nombres del Equipo]</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </footer>
 
     <script src="js/main.js" type="module"></script>
