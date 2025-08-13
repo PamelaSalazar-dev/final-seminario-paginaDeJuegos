@@ -1,8 +1,10 @@
-import { iniciarAhorcado } from './ahorcado.js';
+// Puedes usar este archivo para manejar la lógica compartida entre juegos
+console.log("GameZone cargado correctamente");
 
-document.getElementById('btn-play').addEventListener('click', () => {
-    document.getElementById('descripcion').style.display = 'none';
-    document.getElementById('juego').style.display = 'block';
+// Ejemplo: Puntuación global
+let puntuacionGlobal = 0;
 
-    iniciarAhorcado();
-});
+export function actualizarPuntuacion(puntos) {
+    puntuacionGlobal += puntos;
+    console.log(`Puntuación global: ${puntuacionGlobal}`);
+}

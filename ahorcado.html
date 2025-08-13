@@ -1,34 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ahorcado</title>
-  <link rel="stylesheet" href="css/estilos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahorcado - GameZone</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-  <nav class="menu-principal">
-    <a href="index.html">Inicio</a>
-    <a href="ahorcado.html" class="activo">Ahorcado</a>
-    <a href="noticias.html">Noticias</a>
-    <a href="nosotros.html">Nosotros</a>
-  </nav>
+<body class="game-page">
+    <header class="game-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/imagenes/logo.png" alt="GameZone" class="game-logo">
+            </a>
+            <div class="game-header-controls">
+                <div class="attempts-counter">
+                    <i class="fas fa-heart"></i>
+                    <span id="intentos">6</span>/6
+                </div>
+                <button id="sound-btn" class="sound-btn active">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <a href="juegos.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Menú
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <main class="seccion-principal">
-    <h1>Ahorcado</h1>
+    <main class="game-main">
+        <div class="game-container">
+            <!-- Columna izquierda - Visual del ahorcado -->
+            <div class="game-visual">
+                <div class="hangman-container">
+                    <img src="assets/imagenes/ahorcado-0.png" id="ahorcado-img" class="hangman-image" alt="Estado del ahorcado">
+                    <div class="hangman-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Puntuación:</span>
+                            <span class="stat-value" id="score">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Palabras:</span>
+                            <span class="stat-value" id="words">0/10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <p id="palabra"></p>
-    <p>Intentos restantes: <span id="intentos"></span></p>
-    <img id="imagen-ahorcado" src="imagenes/ahorcado0.png" alt="Estado del ahorcado" />
+            <!-- Columna derecha - Juego -->
+            <div class="game-content">
+                <div class="word-display" id="palabra-container"></div>
+                
+                <div class="game-controls">
+                    <div class="category-selector">
+                        <label for="category"><i class="fas fa-tag"></i> Categoría:</label>
+                        <select id="category">
+                            <option value="general">General</option>
+                            <option value="programacion">Programación</option>
+                            <option value="peliculas">Películas</option>
+                            <option value="animales">Animales</option>
+                        </select>
+                    </div>
+                    
+                    <div class="keyboard-container">
+                        <div class="teclado" id="teclado"></div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="hint-btn" class="action-btn hint-btn">
+                            <i class="fas fa-lightbulb"></i> Pista (-10 pts)
+                        </button>
+                        <button id="reset-btn" class="action-btn reset-btn">
+                            <i class="fas fa-redo"></i> Reiniciar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <button id="btn-play">Play</button>
+        <!-- Mensaje de resultado -->
+        <div class="result-message hidden" id="mensaje">
+            <div class="message-box">
+                <h3 id="message-title">¡Resultado!</h3>
+                <p id="message-text"></p>
+                <div class="message-actions">
+                    <button id="next-btn" class="play-again-btn">
+                        <i class="fas fa-forward"></i> Siguiente
+                    </button>
+                    <button id="quit-btn" class="quit-btn">
+                        <i class="fas fa-sign-out-alt"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <div id="entrada-letra" style="margin-top:20px;">
-      <input type="text" id="input-letra" maxlength="1" placeholder="Ingresa una letra" disabled />
-      <button id="btn-adivinar" disabled>Adivinar</button>
-    </div>
-  </main>
+    <!-- Elementos de audio -->
+    <audio id="correct-sound" src="assets/sounds/correct.mp3"></audio>
+    <audio id="wrong-sound" src="assets/sounds/wrong.mp3"></audio>
+    <audio id="win-sound" src="assets/sounds/win.mp3"></audio>
+    <audio id="lose-sound" src="assets/sounds/lose.mp3"></audio>
 
-  <script type="module" src="js/ahorcado.js"></script>
+    <script src="js/ahorcado.js" type="module"></script>
 </body>
 </html>
