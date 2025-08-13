@@ -1,19 +1,100 @@
-<section class="todos-juegos">
-    <h2>Todos los Juegos</h2>
-    <div class="filtros">
-        <button class="btn-filter active">Todos</button>
-        <button class="btn-filter">Clásicos</button>
-        <button class="btn-filter">Desafíos</button>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos - GameZone</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/juegos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="games-page">
 
-    <div class="juegos-grid">
-        <!-- Juego 1 -->
-        <div class="juego-card">
-            <img src="assets/imagenes/ahorcado-icon.png" alt="Ahorcado">
-            <h3>Ahorcado</h3>
-            <p>Adivina la palabra oculta antes de que se complete el dibujo.</p>
-            <a href="ahorcado.html" class="btn">Jugar</a>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <img src="assets/imagenes/logo.png" alt="GameZone" class="logo">
+            </a>
         </div>
-        <!-- Más juegos -->
-    </div>
-</section>
+    </header>
+
+    <main>
+        <section class="todos-juegos">
+            <div class="section-header">
+                <h2>Todos los Juegos</h2>
+                <div class="filtros">
+                    <button class="btn-filter active" data-filter="all">Todos</button>
+                    <button class="btn-filter" data-filter="classic">Clásicos</button>
+                    <button class="btn-filter" data-filter="challenge">Desafíos</button>
+                </div>
+            </div>
+
+            <div class="juegos-grid">
+                <!-- Juego 1: Ahorcado -->
+                <div class="juego-card" data-category="classic">
+                    <div class="card-image-container">
+                        <img src="assets/imagenes/ahorcadoPrincipal.png" alt="Ahorcado" class="game-image">
+                        <div class="game-badge classic">Clásico</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ahorcado</h3>
+                        <p>Adivina la palabra oculta antes de que se complete el dibujo.</p>
+                        <div class="card-footer">
+                            <div class="game-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                            <a href="ahorcado.html" class="btn btn-play">
+                                <i class="fas fa-play"></i> Jugar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 2: Piedra Papel o Tijera -->
+                <div class="juego-card" data-category="classic">
+                    <div class="card-image-container">
+                        <img src="assets/imagenes/ppt.png" alt="Piedra, Papel o Tijera" class="game-image">
+                        <div class="game-badge classic">Clásico</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Piedra, Papel o Tijera</h3>
+                        <p>El clásico duel de lógica y suerte contra la computadora.</p>
+                        <div class="card-footer">
+                            <div class="game-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                            <a href="piedraPapelTijera.html" class="btn btn-play">
+                                <i class="fas fa-play"></i> Jugar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juego 3: Memotest -->
+                <div class="juego-card" data-category="challenge">
+                    <div class="card-image-container">
+                        <img src="assets/imagenes/memoria.png" alt="Memotest" class="game-image">
+                        <div class="game-badge challenge">Desafío</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Memotest</h3>
+                        <p>Encuentra todas las parejas antes de que se acabe el tiempo.</p>
+                        <div class="card-footer">
+                            <div class="game-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                            <a href="memotest.html" class="btn btn-play">
+                                <i class="fas fa-play"></i> Jugar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

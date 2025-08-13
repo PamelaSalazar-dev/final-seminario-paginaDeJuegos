@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameZone | Inicio</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/juegos.css"> <!-- CSS específico para la sección de juegos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="header-container">
-            <img src="assets/imagenes/logo.png" alt="GameZone" class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/imagenes/logo.png" alt="GameZone" class="logo">
+            </a>
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Inicio</a></li>
@@ -28,7 +31,8 @@
                 <h1>¡Diversión sin Límites!</h1>
                 <p>Juegos clásicos y desafiantes para todas las edades</p>
                 <div class="hero-buttons">
-                    <a href="#featured-games" class="btn btn-primary">Explorar Juegos</a>
+                    <a href="juegos.html" class="btn btn-primary">Explorar Juegos</a>
+                    <a href="nosotros.html" class="btn btn-secondary">Conócenos</a>
                 </div>
             </div>
         </section>
@@ -36,41 +40,49 @@
         <section class="featured-games" id="featured-games">
             <h2 class="section-title">Juegos Destacados</h2>
             
-            <!-- Tarjeta del Ahorcado (TU VERSIÓN) -->
-            <div class="game-card" onclick="location.href='ahorcado.html'">
-                <div class="card-icon">
-                    <i class="fas fa-ghost"></i>
-                </div>
-                <h3>Ahorcado</h3>
-                <p>Adivina palabras por categorías</p>
-                <div class="card-footer">
-                    <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
-                </div>
+            <div class="games-grid">
+                <!-- Tarjeta del Ahorcado -->
+                <a href="ahorcado.html" class="game-card">
+                    <div class="card-icon">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Ahorcado</h3>
+                        <p>Adivina palabras por categorías</p>
+                        <div class="card-footer">
+                            <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Tarjeta de Piedra, Papel o Tijera -->
+                <a href="piedra-papel-tijera.html" class="game-card">
+                    <div class="card-icon">
+                        <i class="fas fa-hand-scissors"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Piedra, Papel o Tijera</h3>
+                        <p>Clásico juego de manos</p>
+                        <div class="card-footer">
+                            <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Más juegos pueden agregarse aquí -->
             </div>
-            
-            <!-- Tarjeta de Piedra, Papel o Tijera (VERSIÓN DE TU COMPAÑERA) -->
-            <div class="game-card" onclick="location.href='piedra-papel-tijera.html'">
-                <div class="card-icon">
-                    <i class="fas fa-hand-scissors"></i>
-                </div>
-                <h3>Piedra, Papel o Tijera</h3>
-                <p>Clásico juego de manos</p>
-                <div class="card-footer">
-                    <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
-                </div>
-            </div>
-            
-            <!-- Espacio para más juegos -->
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <p>© 2023 GameZone | Desarrollado por [Nombres del Equipo]</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="footer-container">
+            <div class="footer-content">
+                <p>© 2023 GameZone | Desarrollado por [Tu Nombre]</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
         </div>
     </footer>

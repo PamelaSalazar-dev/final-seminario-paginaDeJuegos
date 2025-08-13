@@ -1,71 +1,12 @@
-/* Estilos base */
-:root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --danger-color: #e74c3c;
-    --dark-color: #2c3e50;
-    --light-color: #ecf0f1;
-    --background-gradient: linear-gradient(135deg, #1e5799 0%,#2989d8 50%,#207cca 100%);
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f7fa;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Header */
-header {
-    background-color: var(--dark-color);
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.logo {
-    height: 50px;
-}
-
-/* Navegación */
-.nav-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    margin: 0 5px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active {
-    background-color: rgba(255,255,255,0.2);
-}
-
-/* Página del juego */
+/* ================== Página del juego ================== */
 .game-page {
     background: var(--background-gradient);
     min-height: 100vh;
-    color: white;
+    color: rgb(23, 168, 204);
+    font-family: 'Arial', sans-serif;
 }
 
+/* Header */
 .game-header {
     background-color: rgba(0,0,0,0.7);
     padding: 15px 0;
@@ -91,7 +32,7 @@ header {
 .sound-btn {
     background: none;
     border: none;
-    color: white;
+    color: rgb(13, 218, 132);
     font-size: 1.2rem;
     cursor: pointer;
 }
@@ -119,6 +60,7 @@ header {
     min-width: 300px;
 }
 
+/* Imagen del ahorcado */
 .hangman-image {
     max-width: 100%;
     height: auto;
@@ -127,6 +69,7 @@ header {
     margin: 0 auto;
 }
 
+/* Estadísticas */
 .hangman-stats {
     background-color: rgba(0,0,0,0.3);
     padding: 15px;
@@ -151,7 +94,7 @@ header {
     font-weight: bold;
 }
 
-/* Palabra oculta */
+/* Palabra oculta (lo importante para que se vea) */
 .word-display {
     font-size: 2rem;
     letter-spacing: 10px;
@@ -162,6 +105,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #a50c0c;
 }
 
 /* Teclado */
@@ -181,9 +125,9 @@ header {
     height: 40px;
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(39, 35, 35, 0.26);
     color: white;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(10, 8, 8, 0.3);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s;
@@ -197,6 +141,11 @@ header {
 .teclado button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.teclado button.pressed {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
 }
 
 /* Controles */
@@ -277,7 +226,7 @@ header {
     transition: opacity 0.3s ease;
 }
 
-.result-message.visible {
+.result-message.visible, .result-message:not(.hidden) {
     opacity: 1;
     pointer-events: all;
 }
@@ -295,7 +244,6 @@ header {
 
 .message-box h3 {
     margin-top: 0;
-    color: var(--primary-color);
     font-size: 1.8rem;
 }
 
@@ -325,13 +273,8 @@ header {
     color: white;
 }
 
-/* Responsive */
+/* ================== Responsive ================== */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
     .game-header-controls {
         width: 100%;
         justify-content: space-between;
@@ -354,7 +297,7 @@ header {
     }
 }
 
-/* Animaciones */
+/* ================== Animaciones ================== */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -364,24 +307,4 @@ header {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
-}
-
-/* Clases utilitarias */
-.hidden {
-    display: none !important;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: all 0.2s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }

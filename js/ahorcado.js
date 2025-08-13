@@ -80,8 +80,10 @@ function obtenerPalabraAleatoria() {
 
 // Actualizar visualización de la palabra
 function actualizarPalabra() {
+    console.log("Letras adivinadas:", estadoJuego.letrasAdivinadas);
     elementos.palabraContainer.textContent = estadoJuego.letrasAdivinadas.join(" ");
 }
+
 
 // Actualizar contador de intentos
 function actualizarIntentos() {
