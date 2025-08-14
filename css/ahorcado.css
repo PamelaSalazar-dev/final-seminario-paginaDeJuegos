@@ -1,10 +1,21 @@
 /* ================== Página del juego ================== */
+/* ================== Página del juego ================== */
 .game-page {
-    background: var(--background-gradient);
+    background: linear-gradient(270deg, #ff758c, #ff7eb3, #8fd3f4, #84fab0);
+    background-size: 800% 800%;
+    animation: gradiente 12s ease infinite;
     min-height: 100vh;
     color: rgb(23, 168, 204);
     font-family: 'Arial', sans-serif;
 }
+
+/* Animación del degradado */
+@keyframes gradiente {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 /* Header */
 .game-header {

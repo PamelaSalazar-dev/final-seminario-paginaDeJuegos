@@ -56,3 +56,94 @@ header {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
+/* ==== Sección Equipo ==== */
+.equipo {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+    text-align: center;
+}
+
+.equipo h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.miembro {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.miembro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.miembro h3 {
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.miembro p {
+    color: #555;
+}
+
+/* ==== Sección Contacto ==== */
+.contacto {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    text-align: center;
+}
+
+.contacto h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.contacto input,
+.contacto textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.contacto textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contacto .btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contacto .btn:hover {
+    background-color: #005f87;
+}
