@@ -1,0 +1,57 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #f0f4ff, #dff6ff);
+    margin: 0;
+    padding: 20px;
+}
+
+/* Contenedor de noticias */
+.noticias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tarjeta de cada noticia */
+.noticias article {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 350px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto hover */
+.noticias article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Título */
+.noticias h3 {
+    color: #1a73e8;
+    font-size: 1.4rem;
+}
+
+/* Fecha */
+.fecha {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Imagen */
+.noticias img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Texto */
+.noticias p {
+    color: #333;
+    line-height: 1.4;
+}
