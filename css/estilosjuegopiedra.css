@@ -46,6 +46,13 @@ button:hover {
   background-color: #d32f2f;
 }
 
+/* Botón musica */
+#music-toggle {
+  background-color: #00bfa5;
+}
+
+
+
 /* Texto de resultados */
 #resultado {
   font-size: 1.2rem;
@@ -56,4 +63,26 @@ button:hover {
   font-weight: bold;
   font-size: 1.3rem;
   margin: 15px 0;
+}
+
+/*nuevo*/
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px; /* separación entre botones y gif */
+  margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.gif img {
+  width: 150px; /* ajustá el tamaño del gif */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }

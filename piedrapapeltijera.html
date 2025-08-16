@@ -9,16 +9,26 @@
 <body>
   <h1>Piedra, Papel o Tijera</h1>
 
+  <div class="game-container">
   <div>
     <button id="piedra">Piedra</button>
     <button id="papel">Papel</button>
     <button id="tijera">Tijera</button>
   </div>
 
+    <div class="gif">
+    <img src="assets/imagenes/piedra-papel-tijera.gif" alt="Piedra Papel Tijera" />
+    </div>
+  </div>  
+
   <p id="resultado"></p>
   <p id="puntaje">Jugador: 0 | Máquina: 0</p>
 
+  <div>
   <button id="reiniciar">Reiniciar</button>
+  <!-- Botón para activar/desactivar música -->
+  <button id="music-toggle">🔊 Música: ON</button>
+  </div>
 
   <script src="js/piedrapapeltijera.js"></script>
 </body>

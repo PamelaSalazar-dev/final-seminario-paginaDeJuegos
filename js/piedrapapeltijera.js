@@ -70,3 +70,17 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   document.getElementById('puntaje').textContent = 'Jugador: 0 | Máquina: 0';
   habilitarBotones();
 });
+
+let musicPlaying = true;
+
+toggleBtn.addEventListener("click", () => {
+    if (musicPlaying) {
+        bgMusic.pause();
+        toggleBtn.textContent = "🔇 Música: OFF";
+    } else {
+        bgMusic.play();
+        toggleBtn.textContent = "🔊 Música: ON";
+    }
+    musicPlaying = !musicPlaying;
+});
+
