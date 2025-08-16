@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameZone | Inicio</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/juegos.css"> <!-- CSS específico para la sección de juegos -->
+    <link rel="stylesheet" href="css/juegos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -24,7 +24,9 @@
             </nav>
         </div>
     </header>
+
     <main>
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-content">
                 <h1>¡Diversión sin Límites!</h1>
@@ -36,10 +38,10 @@
             </div>
         </section>
 
+        <!-- Juegos Destacados -->
         <section class="featured-games" id="featured-games">
             <h2 class="section-title">Juegos Destacados</h2>
-            
-            <!-- Tarjeta del Ahorcado -->
+
             <div class="game-card" onclick="location.href='ahorcado.html'">
                 <div class="card-icon">
                     <i class="fas fa-ghost"></i>
@@ -50,8 +52,7 @@
                     <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
                 </div>
             </div>
-            
-            <!-- Tarjeta de Piedra, Papel o Tijera -->
+
             <div class="game-card" onclick="location.href='piedrapapeltijera.html'">
                 <div class="card-icon">
                     <i class="fas fa-hand-scissors"></i>
@@ -62,10 +63,10 @@
                     <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
                 </div>
             </div>
-            <!-- Tarjeta de Memorama  -->
+
             <div class="game-card" onclick="location.href='memorama.html'">
                 <div class="card-icon">
-                    <i class="fas fa-ghost"></i>
+                    <i class="fas fa-th-large"></i>
                 </div>
                 <h3>Memorama</h3>
                 <p>Buscá todos los pares</p>
@@ -73,24 +74,25 @@
                     <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
                 </div>
             </div>
-            <!-- Espacio para más juegos -->
-             <div class="game-card" onclick="location.href='tateti.html'">
+
+            <div class="game-card" onclick="location.href='tateti.html'">
                 <div class="card-icon">
-                    <i class="fas fa-ghost"></i>
+                    <i class="fas fa-clone"></i>
                 </div>
                 <h3>Ta Te Ti</h3>
-                <p>Adivina palabras por categorías</p>
+                <p>Completa la línea antes que tu oponente</p>
                 <div class="card-footer">
                     <span class="difficulty easy"><i class="fas fa-star"></i> Fácil</span>
                 </div>
             </div>
+
         </section>
     </main>
 
     <footer>
         <div class="footer-container">
             <div class="footer-content">
-                <p>© 2023 GameZone | Desarrollado por [Tu Nombre]</p>
+                <p>© 2023 GameZone | Desarrollado por [3 estudiantes]</p>
                 <div class="social-links">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
