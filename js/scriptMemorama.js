@@ -1,75 +1,121 @@
-const totalCards = 12;
-const availableCards = ['A', 'K', 'Q', 'J'];
-let cards = [];
-let selectedCards = [];
-let valuesUsed = [];
-let currentMove = 0;
-let currentAttempts = 0;
+// ----------------- Variables -----------------
+let cardsArray = [
+    "🍎","🍎",
+    "🍌","🍌",
+    "🍇","🍇",
+    "🍉","🍉",
+    "🍓","🍓",
+    "🍍","🍍"
+];
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let attempts = 0;
 
-let cardTemplate = '<div class="card"><div class="back"></div><div class="face"></div></div>';
-
-function activate(e) {
-   if (currentMove < 2) {
-      if ((!selectedCards[0] || selectedCards[0] !== e.target) && !e.target.classList.contains('active')) {
-         e.target.classList.add('active');
-         selectedCards.push(e.target);
-
-         if (++currentMove == 2) {
-            currentAttempts++;
-            document.querySelector('#stats').innerHTML = currentAttempts + ' intentos';
-
-            if (selectedCards[0].querySelectorAll('.face')[0].innerHTML == selectedCards[1].querySelectorAll('.face')[0].innerHTML) {
-               selectedCards = [];
-               currentMove = 0;
-            } else {
-               setTimeout(() => {
-                  selectedCards[0].classList.remove('active');
-                  selectedCards[1].classList.remove('active');
-                  selectedCards = [];
-                  currentMove = 0;
-               }, 600);
-            }
-         }
-      }
-   }
-}
-
-function randomValue() {
-   let rnd = Math.floor(Math.random() * totalCards * 0.5);
-   let values = valuesUsed.filter(value => value === rnd);
-   if (values.length < 2) {
-      valuesUsed.push(rnd);
-   } else {
-      randomValue();
-   }
-}
-
-function getFaceValue(value) {
-   let rtn = value;
-   if (value < availableCards.length) {
-      rtn = availableCards[value];
-   }
-   return rtn;
-}
-
-for (let i = 0; i < totalCards; i++) {
-   let div = document.createElement('div');
-   div.innerHTML = cardTemplate;
-   cards.push(div);
-   document.querySelector('#game').append(cards[i]);
-   randomValue();
-   cards[i].querySelectorAll('.face')[0].innerHTML = getFaceValue(valuesUsed[i]);
-   cards[i].querySelectorAll('.card')[0].addEventListener('click', activate);
-}
-
-// Tu código existente del juego...
-
-// ---- Control de música ----
+// Elementos de la interfaz
+const gameContainer = document.getElementById("game");
+const stats = document.getElementById("stats");
+const overlay = document.getElementById("overlay");
+const playBtn = document.getElementById("play-btn");
 const bgMusic = document.getElementById("bg-music");
 const toggleBtn = document.getElementById("music-toggle");
 
-// Por defecto no arranca hasta que el usuario haga clic
-let musicPlaying = false;
+// ----------------- Inicio del juego -----------------
+function initGame() {
+    // Resetear estado
+    gameContainer.innerHTML = "";
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+    attempts = 0;
+    stats.textContent = "0 intentos";
+
+    // Mezclar cartas
+    shuffle(cardsArray);
+
+    // Crear tablero
+    cardsArray.forEach(symbol => {
+        const card = createCard(symbol);
+        gameContainer.appendChild(card);
+    });
+}
+
+// ----------------- Utilidades -----------------
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function createCard(symbol) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const back = document.createElement("div");
+    back.classList.add("back");
+
+    const face = document.createElement("div");
+    face.classList.add("face");
+    face.textContent = symbol;
+
+    card.appendChild(back);
+    card.appendChild(face);
+
+    card.addEventListener("click", () => flipCard(card, symbol));
+
+    return card;
+}
+
+// ----------------- Lógica del juego -----------------
+function flipCard(card, symbol) {
+    if (lockBoard || card.classList.contains("active")) return;
+
+    card.classList.add("active");
+
+    if (!firstCard) {
+        firstCard = { card, symbol };
+    } else {
+        secondCard = { card, symbol };
+        checkForMatch();
+    }
+}
+
+function checkForMatch() {
+    lockBoard = true;
+    attempts++;
+    stats.textContent = `${attempts} intentos`;
+
+    if (firstCard.symbol === secondCard.symbol) {
+        resetTurn();
+    } else {
+        setTimeout(() => {
+            firstCard.card.classList.remove("active");
+            secondCard.card.classList.remove("active");
+            resetTurn();
+        }, 1000);
+    }
+}
+
+function resetTurn() {
+    [firstCard, secondCard] = [null, null];
+    lockBoard = false;
+}
+
+// ----------------- Botón Play -----------------
+let gameStarted = false;
+
+playBtn.addEventListener("click", () => {
+    if (gameStarted) return;
+    gameStarted = true;
+
+    overlay.style.display = "none"; // Ocultar overlay
+    bgMusic.play();                 // Música
+    initGame();                     // Arrancar juego
+});
+
+// ----------------- Botón Música -----------------
+let musicPlaying = true;
 
 toggleBtn.addEventListener("click", () => {
     if (musicPlaying) {
@@ -81,5 +127,3 @@ toggleBtn.addEventListener("click", () => {
     }
     musicPlaying = !musicPlaying;
 });
-
-
