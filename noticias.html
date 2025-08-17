@@ -4,54 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameZone | Noticias</title>
-        <link rel="stylesheet" href="css/base.css">
-        <link rel="stylesheet" href="noticias.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/noticias.css">
 </head>
-
 <body>
     <header>
         <nav>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Inicio</a></li>
                 <li><a href="juegos.html" class="nav-link">Juegos</a></li>
-                <li><a href="nosotros.html" class="nav-link active">Nosotros</a></li>
+                <li><a href="noticias.html" class="nav-link active">Noticias</a></li>
+                <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
             </ul>
         </nav>
     </header>
 
+    <main>
+        <!-- ==== Noticias ==== -->
+        <section class="noticias">
+            <article>
+                <img src="assets/imagenes/trivia-preview.jfif" alt="Trivia Challenge">
+                <h3>Trivia Challenge</h3>
+                <p class="fecha">📅 10/10/2026</p>
+                <p>Desafía tus conocimientos con preguntas de cultura general en este emocionante juego.</p>
+                <a href="trivia.html">
+            </article>
 
+            <article>
+                <img src="assets/imagenes/estrategia-preview.jfif" alt="Maestro de Estrategia">
+                <h3>Maestro de Estrategia</h3>
+                <p class="fecha">📅 15/10/2026</p>
+                <p>Planifica, construye y domina el tablero en el nuevo juego de estrategia por turnos.</p>
+                <a href="estrategia.html"></a>
+            </article>
 
-<section class="noticias">
-    <article>
-        <img src="assets/imagenes/trivia-preview.jfif" alt="Trivia Challenge">
-        <div class="contenido">
-            <h3>Trivia Challenge</h3>
-            <p class="fecha">📅 10/10/2026</p>
-            <p>Desafía tus conocimientos con preguntas de cultura general en este emocionante juego.</p>
-            <a href="trivia.html" class="boton">Ver más</a>
-        </div>
-    </article>
+            <article>
+                <img src="assets/imagenes/arcade-preview.jfif" alt="Arcade Retro">
+                <h3>Arcade Retro</h3>
+                <p class="fecha">📅 20/10/2026</p>
+                <p>Revive la experiencia clásica de los videojuegos de los 80 con este arcade renovado.</p>
+                <a href="arcade.html">
+            </article>
+        </section>
 
-    <article>
-        <img src="assets/imagenes/estrategia-preview.jfif" alt="Juego de Estrategia">
-        <div class="contenido">
-            <h3>Maestro de Estrategia</h3>
-            <p class="fecha">📅 15/10/2026</p>
-            <p>Planifica, construye y domina el tablero en el nuevo juego de estrategia por turnos.</p>
-            <a href="estrategia.html" class="boton">Ver más</a>
-        </div>
-    </article>
+        <!-- ==== Próximamente ==== -->
+        <section class="proximamente">
+            <h2>Próximamente</h2>
+            <div class="proximamente-grid">
+                <article>
+                    <div class="emoji">🕹️</div>
+                    <h3>Super Aventuras</h3>
+                    <p class="fecha">📅 Muy pronto</p>
+                    <p>Prepárate para un nuevo desafío que llegará muy pronto a GameZone.</p>
+                </article>
 
-    <article>
-        <img src="assets/imagenes/arcade-preview.jfif" alt="Arcade Retro">
-        <div class="contenido">
-            <h3>Arcade Retro</h3>
-            <p class="fecha">📅 20/10/2026</p>
-            <p>Revive la experiencia clásica de los videojuegos de los 80 con este arcade renovado.</p>
-            <a href="arcade.html" class="boton">Ver más</a>
-        </div>
-    </article>
-</section>
+                <article>
+                    <div class="emoji">🛡️</div>
+                    <h3>Defensores del Reino</h3>
+                    <p class="fecha">📅 Muy pronto</p>
+                    <p>Un juego estratégico donde protegerás tu reino contra todo tipo de enemigos.</p>
+                </article>
+
+                <article>
+                    <div class="emoji">🚀</div>
+                    <h3>Galaxia Extrema</h3>
+                    <p class="fecha">📅 Muy pronto</p>
+                    <p>Explora planetas desconocidos y completa misiones intergalácticas en esta aventura.</p>
+                </article>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p style="text-align:center; margin: 50px 0;">© 2023 GameZone | Desarrollado por [3 estudiantes]</p>
