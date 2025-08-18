@@ -71,16 +71,20 @@ document.getElementById('reiniciar').addEventListener('click', () => {
   habilitarBotones();
 });
 
-let musicPlaying = true;
+// ----------------- Botón Música -----------------
+let musicPlaying = false;
+
+const toggleBtn = document.getElementById("music-toggle");
+const bgMusic = document.getElementById("bg-music");
 
 toggleBtn.addEventListener("click", () => {
     if (musicPlaying) {
         bgMusic.pause();
         toggleBtn.textContent = "🔇 Música: OFF";
     } else {
+        bgMusic.muted = false; // activamos sonido
         bgMusic.play();
         toggleBtn.textContent = "🔊 Música: ON";
     }
     musicPlaying = !musicPlaying;
 });
-
