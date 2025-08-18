@@ -15,7 +15,8 @@ let estadoJuego = {
     palabrasTotales: 10,
     categoriaActual: "general",
     sonidoActivado: true,  // controla todo el audio
-    juegoActivo: false
+    juegoActivo: false,
+    palabrasUsadas: []     // para que no se repitan palabras
 };
 
 // ----------------- Palabras por categoría -----------------
@@ -43,7 +44,7 @@ const elementos = {
     playBtn: document.getElementById("play-btn"),
     nextBtn: document.getElementById("next-btn"),
     quitBtn: document.getElementById("quit-btn"),
-    soundBtn: document.getElementById("sound-btn"), // botón del header
+    soundBtn: document.getElementById("sound-btn"),
     correctSound: document.getElementById("correct-sound"),
     wrongSound: document.getElementById("wrong-sound"),
     winSound: document.getElementById("win-sound"),
@@ -66,16 +67,18 @@ function iniciarJuego() {
     elementos.mensaje.classList.add("hidden");
 }
 
-function iniciarConPlay() {
-    if (!estadoJuego.juegoActivo) {
-        iniciarJuego();
-        elementos.playBtn.disabled = true;
-    }
-}
-
 function obtenerPalabraAleatoria() {
-    const palabras = palabrasPorCategoria[estadoJuego.categoriaActual];
-    return palabras[Math.floor(Math.random() * palabras.length)];
+    const palabras = palabrasPorCategoria[estadoJuego.categoriaActual].filter(
+        palabra => !estadoJuego.palabrasUsadas.includes(palabra)
+    );
+    if (palabras.length === 0) {
+        // Si se usaron todas las palabras, reiniciar lista
+        estadoJuego.palabrasUsadas = [];
+        return obtenerPalabraAleatoria();
+    }
+    const palabra = palabras[Math.floor(Math.random() * palabras.length)];
+    estadoJuego.palabrasUsadas.push(palabra);
+    return palabra;
 }
 
 function actualizarPalabra() {
@@ -155,11 +158,19 @@ function ganarJuego() {
     estadoJuego.palabrasAdivinadas++;
     estadoJuego.puntuacion += config.puntosPorPalabra;
     actualizarPuntuacion();
-    mostrarMensaje(
-        "¡Ganaste! 🎉",
-        `La palabra era: ${estadoJuego.palabraSecreta}\nPuntos ganados: ${config.puntosPorPalabra}`,
-        true
-    );
+    if (estadoJuego.palabrasAdivinadas >= estadoJuego.palabrasTotales) {
+        mostrarMensaje(
+            "¡Juego completado! 🏆",
+            `Has adivinado todas las palabras\nPuntuación final: ${estadoJuego.puntuacion}`,
+            true
+        );
+    } else {
+        mostrarMensaje(
+            "¡Ganaste! 🎉",
+            `La palabra era: ${estadoJuego.palabraSecreta}\nPuntos ganados: ${config.puntosPorPalabra}`,
+            true
+        );
+    }
 }
 
 function perderJuego() {
@@ -187,34 +198,44 @@ function setupEventListeners() {
         iniciarJuego();
     });
     elementos.hintBtn.addEventListener("click", darPista);
-    elementos.resetBtn.addEventListener("click", iniciarJuego);
-    elementos.playBtn.addEventListener("click", iniciarConPlay);
-    elementos.nextBtn.addEventListener("click", () => {
-        if (estadoJuego.palabrasAdivinadas < estadoJuego.palabrasTotales) {
-            elementos.mensaje.classList.add("hidden");
+    elementos.resetBtn.addEventListener("click", () => {
+        estadoJuego.palabrasAdivinadas = 0;
+        estadoJuego.puntuacion = 0;
+        estadoJuego.palabrasUsadas = [];
+        iniciarJuego();
+    });
+
+    // Play button
+    elementos.playBtn.addEventListener("click", () => {
+        if (!estadoJuego.juegoActivo) {
             iniciarJuego();
-        } else {
-            mostrarMensaje(
-                "¡Juego completado! 🏆",
-                `Has adivinado todas las palabras\nPuntuación final: ${estadoJuego.puntuacion}`,
-                true
-            );
-            elementos.nextBtn.disabled = true;
+            elementos.bgMusic.play();
         }
     });
+
+    // Next button
+    elementos.nextBtn.addEventListener("click", () => {
+        elementos.mensaje.classList.add("hidden");
+        if (estadoJuego.palabrasAdivinadas < estadoJuego.palabrasTotales) {
+            iniciarJuego();
+        } else {
+            // reiniciar para volver a jugar libremente
+            estadoJuego.palabrasAdivinadas = 0;
+            estadoJuego.puntuacion = 0;
+            estadoJuego.palabrasUsadas = [];
+            iniciarJuego();
+        }
+    });
+
     elementos.quitBtn.addEventListener("click", () => {
         window.location.href = "juegos.html";
     });
 
-    // ----------------- Botón de sonido general -----------------
+    // Sonido general
     elementos.soundBtn.addEventListener("click", () => {
         estadoJuego.sonidoActivado = !estadoJuego.sonidoActivado;
-
-        // Música de fondo
         if (estadoJuego.sonidoActivado) elementos.bgMusic.play();
         else elementos.bgMusic.pause();
-
-        // Cambiar icono
         elementos.soundBtn.innerHTML = estadoJuego.sonidoActivado
             ? '<i class="fas fa-volume-up"></i>'
             : '<i class="fas fa-volume-mute"></i>';
@@ -239,4 +260,5 @@ function setupEventListeners() {
 // ----------------- Exportación -----------------
 export function iniciarAhorcado() {
     setupEventListeners();
+    elementos.bgMusic.play(); // arranca música al inicio
 }
