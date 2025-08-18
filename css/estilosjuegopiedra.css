@@ -12,6 +12,42 @@ body {
   justify-content: center;
 }
 
+    /* Navbar */
+    .navbar {
+      position: fixed;        /* siempre arriba */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 56px;
+      background: #111827;    /* gris oscuro */
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* título izq / botón der */
+      padding: 0 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #fff;              /* blanco para que se vea sobre negro */
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #374151;      /* gris más claro al pasar el mouse */
+  color: #fff;              /* se mantiene blanco */
+}
+
+
 /* Título */
 h1 {
   font-size: 2.5rem;
