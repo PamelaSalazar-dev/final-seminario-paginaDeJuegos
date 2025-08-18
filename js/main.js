@@ -1,10 +1,7 @@
-// Puedes usar este archivo para manejar la lógica compartida entre juegos
-console.log("GameZone cargado correctamente");
+// Importar Ahorcado
+import { iniciarAhorcado } from './ahorcado.js';
 
-// Ejemplo: Puntuación global
-let puntuacionGlobal = 0;
-
-export function actualizarPuntuacion(puntos) {
-    puntuacionGlobal += puntos;
-    console.log(`Puntuación global: ${puntuacionGlobal}`);
-}
+// Inicializar Ahorcado al cargar el módulo
+document.addEventListener('DOMContentLoaded', () => {
+    iniciarAhorcado();
+});

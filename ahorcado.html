@@ -19,6 +19,7 @@
                     <i class="fas fa-heart"></i>
                     <span id="intentos">6</span>/6
                 </div>
+                <!-- Botón de sonido agregado -->
                 <button id="sound-btn" class="sound-btn active">
                     <i class="fas fa-volume-up"></i>
                 </button>
@@ -68,6 +69,9 @@
                     </div>
                     
                     <div class="action-buttons">
+                        <button id="play-btn" class="action-btn play-btn">
+                            <i class="fas fa-play"></i> Play
+                        </button>
                         <button id="hint-btn" class="action-btn hint-btn">
                             <i class="fas fa-lightbulb"></i> Pista (-10 pts)
                         </button>
@@ -96,12 +100,17 @@
         </div>
     </main>
 
-    <!-- Elementos de audio -->
-    <audio id="correct-sound" src="assets/sound/correct.mp3"></audio>
-<audio id="wrong-sound" src="assets/sound/wrong.mp3"></audio>
-<audio id="win-sound" src="assets/sound/win.mp3"></audio>
-<audio id="lose-sound" src="assets/sound/lose.mp3"></audio>
+    <!-- Música de fondo siempre activa -->
+    <audio id="bg-music" loop>
+        <source src="assets/sound/principal.mp3" type="audio/mpeg">
+    </audio>
 
-    <script src="js/ahorcado.js" type="module"></script>
+    <!-- Sonidos de acciones -->
+    <audio id="correct-sound" src="assets/sound/correct.mp3"></audio>
+    <audio id="wrong-sound" src="assets/sound/wrong.mp3"></audio>
+    <audio id="win-sound" src="assets/sound/win.mp3"></audio>
+    <audio id="lose-sound" src="assets/sound/lose.mp3"></audio>
+
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

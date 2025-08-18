@@ -1,11 +1,11 @@
-// Configuración del juego
+// ----------------- Configuración -----------------
 const config = {
     intentosMaximos: 6,
     puntosPorPalabra: 50,
     penalizacionPista: 10
 };
 
-// Estado del juego
+// ----------------- Estado del juego -----------------
 let estadoJuego = {
     palabraSecreta: "",
     letrasAdivinadas: [],
@@ -14,11 +14,11 @@ let estadoJuego = {
     palabrasAdivinadas: 0,
     palabrasTotales: 10,
     categoriaActual: "general",
-    sonidoActivado: true,
-    juegoActivo: true
+    sonidoActivado: true,  // controla todo el audio
+    juegoActivo: false
 };
 
-// Palabras por categoría
+// ----------------- Palabras por categoría -----------------
 const palabrasPorCategoria = {
     general: ["AHORCADO", "COMPUTADORA", "TELEFONO", "INTERNET", "ELEFANTE", "TELEVISOR"],
     programacion: ["JAVASCRIPT", "HTML", "CSS", "FUNCION", "VARIABLE", "CONSOLA"],
@@ -26,7 +26,7 @@ const palabrasPorCategoria = {
     animales: ["ELEFANTE", "JIRAFA", "TIGRE", "PINGUINO", "LEOPARDO", "CANGURO"]
 };
 
-// Elementos del DOM
+// ----------------- Elementos del DOM -----------------
 const elementos = {
     palabraContainer: document.getElementById("palabra-container"),
     teclado: document.getElementById("teclado"),
@@ -40,16 +40,18 @@ const elementos = {
     categorySelect: document.getElementById("category"),
     hintBtn: document.getElementById("hint-btn"),
     resetBtn: document.getElementById("reset-btn"),
+    playBtn: document.getElementById("play-btn"),
     nextBtn: document.getElementById("next-btn"),
     quitBtn: document.getElementById("quit-btn"),
-    soundBtn: document.getElementById("sound-btn"),
+    soundBtn: document.getElementById("sound-btn"), // botón del header
     correctSound: document.getElementById("correct-sound"),
     wrongSound: document.getElementById("wrong-sound"),
     winSound: document.getElementById("win-sound"),
-    loseSound: document.getElementById("lose-sound")
+    loseSound: document.getElementById("lose-sound"),
+    bgMusic: document.getElementById("bg-music")
 };
 
-// Inicialización del juego
+// ----------------- Funciones del juego -----------------
 function iniciarJuego() {
     estadoJuego.letrasAdivinadas = [];
     estadoJuego.intentosRestantes = config.intentosMaximos;
@@ -64,30 +66,32 @@ function iniciarJuego() {
     elementos.mensaje.classList.add("hidden");
 }
 
-// Obtener palabra aleatoria según categoría
+function iniciarConPlay() {
+    if (!estadoJuego.juegoActivo) {
+        iniciarJuego();
+        elementos.playBtn.disabled = true;
+    }
+}
+
 function obtenerPalabraAleatoria() {
     const palabras = palabrasPorCategoria[estadoJuego.categoriaActual];
     return palabras[Math.floor(Math.random() * palabras.length)];
 }
 
-// Actualizar visualización de la palabra
 function actualizarPalabra() {
     elementos.palabraContainer.textContent = estadoJuego.letrasAdivinadas.join(" ");
 }
 
-// Actualizar contador de intentos
 function actualizarIntentos() {
     elementos.intentosElement.textContent = estadoJuego.intentosRestantes;
     elementos.ahorcadoImg.src = `assets/imagenes/ahorcado-${config.intentosMaximos - estadoJuego.intentosRestantes}.png`;
 }
 
-// Actualizar puntuación
 function actualizarPuntuacion() {
     elementos.scoreElement.textContent = estadoJuego.puntuacion;
     elementos.wordsElement.textContent = `${estadoJuego.palabrasAdivinadas}/${estadoJuego.palabrasTotales}`;
 }
 
-// Crear teclado virtual
 function crearTeclado() {
     elementos.teclado.innerHTML = "";
     const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -100,7 +104,6 @@ function crearTeclado() {
     });
 }
 
-// Verificar letra seleccionada
 function verificarLetra(letra) {
     if (!estadoJuego.juegoActivo) return;
 
@@ -120,7 +123,6 @@ function verificarLetra(letra) {
     crearTeclado();
 }
 
-// Dar pista
 function darPista() {
     if (estadoJuego.puntuacion >= config.penalizacionPista) {
         const letrasNoAdivinadas = [];
@@ -140,7 +142,6 @@ function darPista() {
     }
 }
 
-// Mostrar mensaje
 function mostrarMensaje(titulo, mensaje, esVictoria = false) {
     elementos.messageTitle.textContent = titulo;
     elementos.messageText.textContent = mensaje;
@@ -150,28 +151,25 @@ function mostrarMensaje(titulo, mensaje, esVictoria = false) {
     else reproducirSonido("lose");
 }
 
-// Ganar juego
 function ganarJuego() {
     estadoJuego.palabrasAdivinadas++;
     estadoJuego.puntuacion += config.puntosPorPalabra;
     actualizarPuntuacion();
     mostrarMensaje(
-        "¡Ganaste! 🎉", 
+        "¡Ganaste! 🎉",
         `La palabra era: ${estadoJuego.palabraSecreta}\nPuntos ganados: ${config.puntosPorPalabra}`,
         true
     );
 }
 
-// Perder juego
 function perderJuego() {
     mostrarMensaje(
-        "¡Perdiste! 💀", 
+        "¡Perdiste! 💀",
         `La palabra era: ${estadoJuego.palabraSecreta}\nInténtalo de nuevo`,
         false
     );
 }
 
-// Reproducir sonido
 function reproducirSonido(tipo) {
     if (!estadoJuego.sonidoActivado) return;
     switch(tipo) {
@@ -182,7 +180,7 @@ function reproducirSonido(tipo) {
     }
 }
 
-// Event listeners
+// ----------------- Event listeners -----------------
 function setupEventListeners() {
     elementos.categorySelect.addEventListener("change", (e) => {
         estadoJuego.categoriaActual = e.target.value;
@@ -190,13 +188,14 @@ function setupEventListeners() {
     });
     elementos.hintBtn.addEventListener("click", darPista);
     elementos.resetBtn.addEventListener("click", iniciarJuego);
+    elementos.playBtn.addEventListener("click", iniciarConPlay);
     elementos.nextBtn.addEventListener("click", () => {
         if (estadoJuego.palabrasAdivinadas < estadoJuego.palabrasTotales) {
             elementos.mensaje.classList.add("hidden");
             iniciarJuego();
         } else {
             mostrarMensaje(
-                "¡Juego completado! 🏆", 
+                "¡Juego completado! 🏆",
                 `Has adivinado todas las palabras\nPuntuación final: ${estadoJuego.puntuacion}`,
                 true
             );
@@ -206,25 +205,38 @@ function setupEventListeners() {
     elementos.quitBtn.addEventListener("click", () => {
         window.location.href = "juegos.html";
     });
+
+    // ----------------- Botón de sonido general -----------------
     elementos.soundBtn.addEventListener("click", () => {
         estadoJuego.sonidoActivado = !estadoJuego.sonidoActivado;
-        elementos.soundBtn.innerHTML = estadoJuego.sonidoActivado 
-            ? '<i class="fas fa-volume-up"></i>' 
+
+        // Música de fondo
+        if (estadoJuego.sonidoActivado) elementos.bgMusic.play();
+        else elementos.bgMusic.pause();
+
+        // Cambiar icono
+        elementos.soundBtn.innerHTML = estadoJuego.sonidoActivado
+            ? '<i class="fas fa-volume-up"></i>'
             : '<i class="fas fa-volume-mute"></i>';
     });
+
+    // Teclado físico
     document.addEventListener("keydown", (e) => {
         if (/^[a-z]$/i.test(e.key)) {
             const letra = e.key.toUpperCase();
             const boton = Array.from(elementos.teclado.children).find(
                 btn => btn.textContent === letra && !btn.disabled
             );
-            if (boton) { boton.click(); boton.classList.add("pressed"); setTimeout(() => boton.classList.remove("pressed"), 200); }
+            if (boton) {
+                boton.click();
+                boton.classList.add("pressed");
+                setTimeout(() => boton.classList.remove("pressed"), 200);
+            }
         }
     });
 }
 
-// Inicializar al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
+// ----------------- Exportación -----------------
+export function iniciarAhorcado() {
     setupEventListeners();
-    iniciarJuego();
-});
+}
