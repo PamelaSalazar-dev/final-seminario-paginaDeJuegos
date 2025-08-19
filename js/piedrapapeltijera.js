@@ -59,10 +59,23 @@ function jugar(eleccionUsuario) {
   verificarGanadorFinal();
 }
 
+// ----------------- Reglas del juego -----------------
+function mostrarReglas() {
+  alert(
+    "📜 Reglas de Piedra, Papel o Tijera:\n\n" +
+    "1. Elegí una opción: piedra, papel o tijera.\n" +
+    "2. La máquina elegirá al azar.\n" +
+    "3. Piedra gana a tijera, tijera gana a papel, papel gana a piedra.\n" +
+    "4. Se juega hasta 5 puntos. ¡Buena suerte!"
+  );
+}
+
+// ----------------- Event listeners -----------------
 document.getElementById('piedra').addEventListener('click', () => jugar('piedra'));
 document.getElementById('papel').addEventListener('click', () => jugar('papel'));
 document.getElementById('tijera').addEventListener('click', () => jugar('tijera'));
 
+// Botón de reiniciar
 document.getElementById('reiniciar').addEventListener('click', () => {
   puntosJugador = 0;
   puntosMaquina = 0;
@@ -73,7 +86,6 @@ document.getElementById('reiniciar').addEventListener('click', () => {
 
 // ----------------- Botón Música -----------------
 let musicPlaying = false;
-
 const toggleBtn = document.getElementById("music-toggle");
 const bgMusic = document.getElementById("bg-music");
 
@@ -82,9 +94,14 @@ toggleBtn.addEventListener("click", () => {
         bgMusic.pause();
         toggleBtn.textContent = "🔇 Música: OFF";
     } else {
-        bgMusic.muted = false; // activamos sonido
+        bgMusic.muted = false;
         bgMusic.play();
         toggleBtn.textContent = "🔊 Música: ON";
     }
     musicPlaying = !musicPlaying;
+});
+
+// ----------------- Mostrar reglas al iniciar -----------------
+window.addEventListener("load", () => {
+    mostrarReglas(); // Al cargar la página, muestra las reglas
 });
