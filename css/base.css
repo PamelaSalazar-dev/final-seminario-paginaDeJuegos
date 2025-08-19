@@ -260,3 +260,31 @@ footer {
 .footer-content .social-links a:hover {
   color: var(--accent-color);
 }
+
+/* Estilos del botón redondo para el logo */
+.logo-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;   /* tamaño del botón */
+    height: 80px;
+    border-radius: 50%;
+    background-color: #111; /* fondo oscuro gamer */
+    border: 3px solid #00ff99; /* borde verde neón */
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.6);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 255, 153, 0.9);
+}
+
+/* Ajuste de la imagen dentro del botón */
+.logo-button .logo {
+    width: 80%;   /* ocupa parte del botón */
+    height: auto;
+    display: block;
+}
+
