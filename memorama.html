@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-   <head>
-      <meta charset="UTF-8">
-      <title>Memorama</title>
-      <link rel="stylesheet" href="css/estilosMemorama.css">
-   </head>
-   <body>
-      <div id="stats">0 intentos</div>
-      <div id="wrapper">
-         <div id="game"></div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <title>Memorama</title>
+    <link rel="stylesheet" href="css/estilosMemorama.css">
+</head>
+<body>
+    <!-- Botón de regreso a inicio -->
+    <a href="index.html" class="logo-button">
+        <img src="assets/imagenes/logoGameZone.png" alt="GameZone">
+    </a>
 
-      <!-- Música de fondo -->
-      <audio id="bg-music" src="assets/sound/memories.mp3" loop></audio>
+    <div id="stats">0 intentos</div>
+    <div id="wrapper">
+        <div id="game"></div>
+    </div>
 
-      <!-- Botón Play (overlay inicial) -->
-      <div id="overlay">
-         <button id="play-btn">▶ Play</button>
-      </div>
+    <!-- Música de fondo -->
+    <audio id="bg-music" src="assets/sound/memories.mp3" loop></audio>
 
-      <!-- Botón para activar/desactivar música -->
-      <button id="music-toggle">🔊 Música: ON</button>
+    <!-- Botón Play (overlay inicial) con reglas -->
+    <div id="overlay">
+        <button id="play-btn">▶ Play</button>
+        <div id="rules">
+            <p><strong>Reglas del Memorama:</strong></p>
+            <p>Encuentra todas las parejas de cartas iguales en la menor cantidad de intentos posible. Haz clic en dos cartas para voltearlas y memoriza su posición. ¡Diviértete y reta tu memoria!</p>
+        </div>
+    </div>
 
-      <script src="js/scriptMemorama.js"></script>
-   </body>
+    <!-- Botón para activar/desactivar música -->
+    <button id="music-toggle">🔊 Música: ON</button>
+
+    <script src="js/scriptMemorama.js"></script>
+</body>
 </html>
