@@ -23,7 +23,7 @@ let estadoJuego = {
 const palabrasPorCategoria = {
     general: ["AHORCADO", "COMPUTADORA", "TELEFONO", "INTERNET", "ELEFANTE", "TELEVISOR"],
     programacion: ["JAVASCRIPT", "HTML", "CSS", "FUNCION", "VARIABLE", "CONSOLA"],
-    peliculas: ["TITANIC", "AVATAR", "TOYSTORY", "MATRIX", "PULPFICTION", "PARASITO"],
+    peliculas: ["TITANIC", "AVATAR", "TOYSTORY", "MATRIX", "METEGOL", "PARASITO"],
     animales: ["ELEFANTE", "JIRAFA", "TIGRE", "PINGUINO", "LEOPARDO", "CANGURO"]
 };
 
@@ -205,9 +205,16 @@ function setupEventListeners() {
         iniciarJuego();
     });
 
-    // Play button
+    // Play button con REGLAS antes de iniciar
     elementos.playBtn.addEventListener("click", () => {
         if (!estadoJuego.juegoActivo) {
+            alert("📜 Reglas del Ahorcado:\n\n" +
+                  "1. Tenés 6 intentos para adivinar la palabra.\n" +
+                  "2. Cada error dibuja una parte del ahorcado.\n" +
+                  "3. Podés pedir pistas, pero restan puntos.\n" +
+                  "4. Ganás si completás la palabra antes de quedarte sin intentos.\n\n" +
+                  "¡Mucha suerte! 🍀");
+
             iniciarJuego();
             elementos.bgMusic.play();
         }
